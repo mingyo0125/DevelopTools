@@ -6,14 +6,13 @@ using UnityEngine.Networking;
 public class WebRequest : MonoBehaviour
 {
     [SerializeField]
+    private string url; //ì‚¬ìš©í•  ì´ë¯¸ì§€ íŒŒì¼ ì£¼ì†Œ
+    
+    [SerializeField]
     private int pixelPerUnit = 16; //pixelPerUnit
 
     [SerializeField]
     private Vector2 pivot = Vector2.one * 0.5f; //pivot
-
-    [SerializeField]
-    private string url; //»ç¿ëÇÒ ÀÌ¹ÌÁö ÆÄÀÏ ÁÖ¼Ò
-
 
     private void Update()
     {
@@ -41,9 +40,9 @@ public class WebRequest : MonoBehaviour
 
     private IEnumerator DownloadTexture()
     {
-        UnityWebRequest req = UnityWebRequestTexture.GetTexture(url); //ÅØ½ºÃÄ¸¦ ¹Ş¾Æ¿Â´Ù.
+        UnityWebRequest req = UnityWebRequestTexture.GetTexture(url); //í…ìŠ¤ì³ë¥¼ ë°›ì•„ì˜¨ë‹¤.
 
-        yield return req.SendWebRequest(); //À¥¿¡´Ù°¡ Àü¼Û ¿äÃ»À» º¸³»°í ±â´Ù¸°´Ù.
+        yield return req.SendWebRequest(); //ì›¹ì—ë‹¤ê°€ ì „ì†¡ ìš”ì²­ì„ ë³´ë‚´ê³  ê¸°ë‹¤ë¦°ë‹¤.
 
         if(req.result == UnityWebRequest.Result.Success)
         {
@@ -58,7 +57,7 @@ public class WebRequest : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Àü¼Û ½ÇÆĞ");
+            Debug.LogError("ì „ì†¡ ì‹¤íŒ¨");
             Debug.LogError(req.responseCode);
             Debug.Log(req.error);
         }
