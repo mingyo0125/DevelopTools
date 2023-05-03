@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool<T> where T : PoolAbleMono
+public class Pool<T> where T : PoolableMono
 {
     private Stack<T> _pool = new Stack<T>();
     private T _prefab;
@@ -13,9 +13,9 @@ public class Pool<T> where T : PoolAbleMono
         _prefab = prefab;
         _parent = parent;
 
-        for (int i = 0; i < count; i++)
+        for(int i =0; i<count; i++)
         {
-            T obj = GameObject.Instantiate(prefab, _parent);
+            T obj = GameObject.Instantiate(prefab, parent);
             obj.gameObject.name = obj.gameObject.name.Replace("(Clone)", "");
             obj.gameObject.SetActive(false);
             _pool.Push(obj);
@@ -26,10 +26,11 @@ public class Pool<T> where T : PoolAbleMono
     {
         T obj = null;
 
-        if (_pool.Count <= 0)
+        if(_pool.Count <= 0)
         {
             obj = GameObject.Instantiate(_prefab, _parent);
             obj.gameObject.name = obj.gameObject.name.Replace("(Clone)", "");
+
         }
         else
         {
