@@ -14,5 +14,12 @@
  1. url에 사용할 이미지의 url 주소
  2. pixelPerUnit에 텍스쳐의 pixelPerUnit값
  3. pivot에 텍스쳐를 그릴 pivot을 지정해준다.
+
+ ### 🖼️ PoolManager :
+ - 오브젝트를 제네릭 풀링 할 수 있는 도구
+ - 사용방법 :
+ 1. 게임매니저를 생성 한 뒤 게임 매니저에 오브젝트를 담은 SO를 넣는다.
+ 2.  생성을 실행할 스크립트에서 PoolAbleMono를 상속 받은 뒤 
+ 
           
 ---
